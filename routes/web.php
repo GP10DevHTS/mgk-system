@@ -5,6 +5,8 @@ use App\Livewire\Products\ShowStockCounts;
 use App\Livewire\Products\ViewProduct;
 use App\Livewire\Purchases\ShowPurchases;
 use App\Livewire\Supplier\ShowSuppliers;
+use App\Models\Product;
+use App\Models\Purchase;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -20,7 +22,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $lowStockItems = Product::where('current_stock', '<=', 'min_stock')->get();
+        $recentPurchases = Purchase::orderBy('ordered_at', 'desc')->take(5)->get();
+
+        return view('dashboard', compact('lowStockItems', 'recentPurchases'));
     })->name('dashboard');
 
     Route::get('/products', ShowProducts::class)->name('products');
