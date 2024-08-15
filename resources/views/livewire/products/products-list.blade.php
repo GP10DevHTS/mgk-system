@@ -23,7 +23,9 @@
                         $stockIndicatorColor = $currentStock <= $minStock ? 'bg-red-500' : 'bg-green-500';
                     @endphp
                     <tr>
-                        <td class="border px-4 py-2">{{ $product->name }}</td>
+                        <td class="border px-4 py-2">
+                            <a class="text-blue-500" href="{{ route('product.view', ['uuid' => $product->uuid]) }}">{{ $product->name }}</a>
+                        </td>
                         <td class="border px-4 py-2">{{ $product->description }}</td>
                         <td class="border px-4 py-2">{{ $product->category ? $product->category->name : 'N/A' }}</td>
                         <td class="border px-4 py-2">

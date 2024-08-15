@@ -16,6 +16,7 @@ class Product extends Model
         'category_id',
         'current_stock',
         'min_stock',
+        'uuid',
     ];
 
     public function category()
@@ -41,5 +42,10 @@ class Product extends Model
 
         // Return the count or 0 if no stock count exists
         return $latestStockCount ? $latestStockCount->count : 0;
+    }
+
+    public function purchaseItems()
+    {
+        return $this->hasMany(PurchaseItem::class);
     }
 }
