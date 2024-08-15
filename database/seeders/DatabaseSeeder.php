@@ -23,6 +23,13 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
+        User::factory()->withPersonalTeam()->create([
+            'name' => 'Cathy MGK',
+            'email' => 'cathy@mgk-system.net',
+            'password' => Hash::make('kali'),
+            'email_verified_at' => now(),
+        ]);
+
         $this->call(CategorySeeder::class);
         $this->call(ProductSeeder::class);
     }
