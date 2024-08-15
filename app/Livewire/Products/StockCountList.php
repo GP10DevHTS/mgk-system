@@ -6,9 +6,12 @@ use App\Models\StockCount;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Carbon\Carbon;
+use Laravel\Jetstream\InteractsWithBanner;
 
 class StockCountList extends Component
 {
+    use InteractsWithBanner;
+
     public $filterByUser = false; // Toggle to filter by current user
 
     public function toggleUserFilter()
@@ -27,6 +30,20 @@ class StockCountList extends Component
         }
 
         return $query->get();
+    }
+
+    public function deleteStockCount($stockCountId)
+    {
+        $stockCount = StockCount::find($stockCountId);
+
+        if ($stockCount && $stockCount->created_by == Auth::id()) {
+            $stockCount->delete(); // Soft delete
+            // session()->flash('message', 'Stock count deleted successfully.');
+            $this->banner('Stock count deleted successfully.', 'success');
+        } else {
+            // session()->flash('error', 'You are not authorized to delete this stock count.');
+            $this->banner('You are not authorized to delete this stock count.', 'error');
+        }
     }
 
     public function render()
