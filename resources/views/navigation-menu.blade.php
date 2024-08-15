@@ -21,6 +21,12 @@
                     <x-nav-link href="{{ route('stock-counts') }}" :active="request()->routeIs('stock-counts')">
                         {{ __('Stock Counts') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('purchases') }}" :active="request()->routeIs('purchases')">
+                        {{ __('Purchases') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('suppliers') }}" :active="request()->routeIs('suppliers')">
+                        {{ __('Suppliers') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -166,6 +172,14 @@
 
             <x-responsive-nav-link href="{{ route('stock-counts') }}" :active="request()->routeIs('stock-counts')">
                 {{ __('Stock Counts') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('purchases') }}" :active="request()->routeIs('purchases')">
+                {{ __('Purchases') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link href="{{ route('suppliers') }}" :active="request()->routeIs('suppliers')">
+                {{ __('Suppliers') }}
             </x-responsive-nav-link>
         </div>
 

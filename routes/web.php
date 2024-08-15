@@ -2,6 +2,8 @@
 
 use App\Livewire\Products\ShowProducts;
 use App\Livewire\Products\ShowStockCounts;
+use App\Livewire\Purchases\ShowPurchases;
+use App\Livewire\Supplier\ShowSuppliers;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -22,4 +24,6 @@ Route::middleware([
 
     Route::get('/products', ShowProducts::class)->name('products');
     Route::get('/stock-counts', ShowStockCounts::class)->name('stock-counts');
+    Route::get('/purchases', ShowPurchases::class)->name('purchases');
+    Route::get('/suppliers', ShowSuppliers::class)->name('suppliers');
 });
