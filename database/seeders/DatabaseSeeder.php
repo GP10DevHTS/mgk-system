@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('kali'),
             'email_verified_at' => now(),
         ]);
+
+        $this->call(CategorySeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }

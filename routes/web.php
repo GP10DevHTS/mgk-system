@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Products\ShowProducts;
+use App\Livewire\Products\ShowStockCounts;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -17,4 +19,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/products', ShowProducts::class)->name('products');
+    Route::get('/stock-counts', ShowStockCounts::class)->name('stock-counts');
 });
